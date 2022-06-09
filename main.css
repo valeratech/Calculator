@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+header {
+    height: 100px;
+}
+
 main {
     display: flex;
     align-items: center;
@@ -16,7 +20,13 @@ main {
     background-color: #d9f4ff;
     border-style: solid;
     height: 800px;
-    width: 500px;
+    flex-basis: 500px;
+}
+
+aside {
+    flex-basis: 200px;
+    background-color: red;
+    align-self: flex-start;
 }
 
 .container {
@@ -29,3 +39,4 @@ main {
     height: 132.5px;
 
 }
+
