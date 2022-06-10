@@ -1,39 +1,48 @@
-const add = function(num1, num2) {
+function add(num1, num2) {
     return (num1 + num2);
 };
 
-const subtract = function(num1, num2) {
-    return (num1 - num2)
+function substract(num1, num2) {
+    return (num1 - num2);
 };
 
-const sum = function(numList) {
-    return numList.reduce((a, b) => a + b, 0);
+function multiply(num1, num2) {
+    return (num1 * num2);
 };
 
-const multiply = function(numList) {
-    return numList.reduce((a, b) => a * b, 1)
+function divide(num1, num2) {
+    return (num1 / num2);
 };
 
-const power = function(num1, num2) {
-    let calc = num1
-    let acc = num2 - 1;
-    if (num2 === 0) {
-        return 1;
+function operate(data) {
+    operator = data[0]
+    numberOne = data[1]
+    numberTwo = data[2]
+    if (operator === '+') {
+        return add(numberOne, numberTwo);
+    } else if (operator === '-') {
+        return substract(numberOne, numberTwo);
+    } else if (operator === '*') {
+        return multiply(numberOne, numberTwo);
+    } else if (operator === '/') {
+        return divide(numberOne, numberTwo);
     }
-    else {
-        for (let g = 0; g < acc; g++) {
-            calc = calc * num1;
-        }
-        return calc;
-    }
-};
-
-const factorial = function(num) {
-    let calc = 1
-    let acc = num + 1
-    for (let n = 2; n < acc; n++) {
-        console.log(calc);
-        calc = calc * n;
-    }
-    return calc
 }
+
+
+let numList = []
+let displayOne = document.querySelector('h5');
+console.log(displayOne.innerText);
+let calc = document.querySelector('.calculator');
+calc.addEventListener('click', function(e) {
+
+    let digit = e.target.innerText;
+    numList.push(digit);
+    let display = document.querySelector('.display');
+
+});
+
+// console.log(operate(['/',10,2]));
+
+
+
