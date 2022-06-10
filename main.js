@@ -1,4 +1,6 @@
 let numList = [0];
+numTwo = 0;
+numOne = 0;
 
 function add(num1, num2) {
     return (num1 + num2);
@@ -33,29 +35,32 @@ function operate(data) {
 
 
 function updateDisplay(displayList) {
-    let number = displayList.join('');
-    console.log(number);
+    let number = (displayList.join('')).substring(0,9);
+
     let displayOne = document.querySelector('h2');
-    displayOne.innerText = number;
-    if(displayList.length > 9) {
-        display.innerText = number.substring(0, 9);
+    if(number.length < 9) {
+        displayOne.innerText = parseInt(number);
+        return number
     }
+    return number
 }
 
 updateDisplay([0]);
 
 let displayOne = document.querySelector('h5');
-console.log(displayOne.innerText);
+let displayTwo = document.querySelector('h2');
+console.log(displayTwo.innerText);
 let calc = document.querySelector('.calculator');
 calc.addEventListener('click', function(e) {
 
     let digit = e.target.id;
-    console.log(digit);
+
     if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(digit)) {
         numList.push(digit);
-        updateDisplay(numList);
+        numTwo = updateDisplay(numList);
+        console.log(numTwo);
     } else if (digit === 'add') {
-        alert('hello');
+        displayOne.innerText = parseInt(numTwo);
     }
 
 })
