@@ -12,6 +12,10 @@ h5, h2 {
     text-align: right;
 }
 
+h2 {
+    font-size: 48px;
+}
+
 main {
     display: flex;
     align-items: center;
@@ -35,8 +39,9 @@ main {
     flex-direction: column;
     background-color: #d9f4ff;
     border-style: solid;
-    height: 800px;
-    flex-basis: 500px;
+    height: 825px;
+    flex: 0 1 500px;
+    flex-flow: wrap;
 }
 
 aside {
@@ -53,6 +58,7 @@ aside {
 .button {
     flex-basis: 200px;
     height: 132.5px;
+    margin: 2px;
 
 }
 
