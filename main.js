@@ -1,42 +1,46 @@
 let numList = [0];
 const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-let operator = 'default'
-numOne = '';
-numTwo = 0;
-let displayOne = document.querySelector('h5');
-let displayTwo = document.querySelector('h2');
+let Operator = 'default';
+let currentOperator = 'default';
+let hiddenOperator = 'default';
+let count = 0;
+let number = 0;
+let displayOne = document.querySelector('.first');
+let displaySign = document.querySelector('.operator');
+let displayCurrent = document.querySelector('.current');
+let displayHidden = document.querySelector('.hidden');
+let displayTwo = document.querySelector('.second');
+let displayMain = document.querySelector('h2');
+let displayEquals = document.querySelector('.equal');
+let value = 0;
 
 function add(num1, num2) {
-    displayTwo.innerText = (num1 + num2)
     return (num1 + num2);
 };
 
 function substract(num1, num2) {
-    displayTwo.innerText = (num1 - num2)
     return (num1 - num2);
 };
 
 function multiply(num1, num2) {
-    displayTwo.innerText = (num1 * num2)
     return (num1 * num2);
 };
 
 function divide(num1, num2) {
-    displayTwo.innerText = (num1 / num2)
     return (num1 / num2);
 };
 
 function operate(data) {
-    operator = data[0]
+    Operator = data[0]
     numberOne = parseInt(data[1]);
     numberTwo = parseInt(data[2]);
-    if (operator === 'add') {
+    if (Operator === 'add') {
         return add(numberOne, numberTwo);
-    } else if (operator === 'subtract') {
+    } else if (Operator === 'subtract') {
         return substract(numberOne, numberTwo);
-    } else if (operator === 'multiply') {
+    } else if (Operator === 'multiply') {
         return multiply(numberOne, numberTwo);
-    } else if (operator === 'divide') {
+    } else if (Operator === 'divide') {
         return divide(numberOne, numberTwo);
     }
 }
@@ -55,55 +59,120 @@ function updateDisplay(displayList) {
 
 updateDisplay([0]);
 
+function test() {
+    if (count === 0) {
+        displayOne.innerText = displayMain.innerText;
+        count++
+        if (displaySign.innerText === '+') {
+            currentOperator = 'add';
+        } else if (displaySign.innerText === '-') {
+            currentOperator = 'subtract';
+        } else if (displaySign.innerText === '*') {
+            currentOperator = 'multiply';
+        } else if (displaySign.innerText === '/') {
+            currentOperator = 'divide';
+        }
+        currentOperator = Operator;
+    } else if (displayEquals.innerText === '=') {
+        
+        displayHidden.innerText = currentOperator;
+        console.log(`value1: ${displayOne.innerText}`);
+        console.log(`value2: ${displayMain.innerText}`);
+        console.log(`ecurOperator: ${Operator}`);
+        console.log(`ecurrentOperator: ${currentOperator}`)
+        displayTwo.innerText = '';
+        displayEquals.innerText = '';
+        displayOne.innerText = displayMain.innerText;
+    } else if (!(displayEquals.innerText === '=')) {
+        // currentOperator = Operator;
+        displayHidden.innerText = currentOperator;
+        console.log(`value1: ${displayOne.innerText}`);
+        console.log(`value2: ${displayMain.innerText}`);
+        console.log(`ncurOperator: ${Operator}`);
+        console.log(`ncurrentOperator: ${currentOperator}`)
+        value = operate([Operator, displayOne.innerText, displayMain.innerText]);
+
+
+        displayMain.innerText = value;
+        displayOne.innerText = displayMain.innerText;
+    } else {
+        currentOperator = Operator;
+        console.log(`value1: ${displayOne.innerText}`);
+        console.log(`value2: ${displayMain.innerText}`);
+        console.log(`ecurOperator: ${Operator}`);
+        console.log(`ecurrentOperator: ${currentOperator}`)
+
+        value = operate([Operator, displayOne.innerText, displayMain.innerText]);
+        displayMain.innerText = value;
+        displayOne.innerText = displayMain.innerText;
+    }
+}
+
 function pressButton(e) {
 
-
-    console.log(displayTwo.innerText);
     let digit = e.target.id;
 
     if (digits.includes(digit)) {
         numList.push(digit);
-        numTwo = updateDisplay(numList);
-        console.log(numTwo);
+        number = updateDisplay(numList);
+
     } else if (digit === 'add') {
-        operator = 'add'
-        displayOne.innerText = parseInt(numTwo);
+
+        displaySign.innerText = '+';
+        Operator = 'add'
         numList = [];
+        test();
+
     } else if (digit === 'subtract') {
-        operator = 'subtract'
-        displayOne.innerText = parseInt(numTwo);
+
+        displaySign.innerText = '-';
+        displayHidden.innerText = Operator;
+        Operator = 'subtract'
         numList = [];
+        test();
+
     } else if (digit === 'multiply') {
-        operator = 'multiply'
-        displayOne.innerText = parseInt(numTwo);
+
+        displaySign.innerText = 'x';
+        Operator = 'multiply'
         numList = [];
+        test();
+
     } else if (digit === 'divide') {
-        operator = 'divide'
-        displayOne.innerText = parseInt(numTwo);
+
+        displaySign.innerText = '/';
+        displayHidden.innerText = Operator;
+        Operator = 'divide'
         numList = [];
+        test();
+
     } else if (digit === 'equals') {
         console.log(`value1: ${displayOne.innerText}`);
-        console.log(`value2: ${displayTwo.innerText}`);
-        console.log(`operator: ${operator}`);
-        console.log(operate([operator, displayOne.innerText, displayTwo.innerText]));
+        console.log(`value2: ${displayMain.innerText}`);
+        console.log(`ecurrentOperator: ${currentOperator}`);
+        displayTwo.innerText = displayMain.innerText;
+        displayEquals.innerText = '='
+
+        let value = operate([currentOperator, displayOne.innerText, displayMain.innerText]);
+        displayMain.innerText = value;
     } else if (digit === 'clear') {
+
+        hidden = false;
         numList = [];
-        displayOne.innerText = ' ';
-        displayTwo.innerText = 0;
-        operator = 'default'
+        displayOne.innerText = '';
+        displayMain.innerText = 0;
+        displaySign.innerText = ''
+        Operator = 'default';
 
     }
 }
 
-
-// console.log(operate([displayOne.innerText, displayTwo.innerText, 'add']));
-
 let calc = document.querySelector('.calculator');
 calc.addEventListener('click', pressButton);
-console.log(operator);
 
 
-// console.log(operate(['/',10,2]));
+
+
 
 
 

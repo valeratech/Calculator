@@ -38,7 +38,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/administrator/Odin/javascript-exercises/08_calculator/calculator.spec.js&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/administrator/Odin/RPS&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -63,7 +63,8 @@
       <updated>1653320180798</updated>
       <workItem from="1653320182023" duration="918000" />
       <workItem from="1654739933513" duration="11064000" />
-      <workItem from="1654959475299" duration="11360000" />
+      <workItem from="1654959475299" duration="40684000" />
+      <workItem from="1655593932962" duration="480000" />
     </task>
     <servers />
   </component>
