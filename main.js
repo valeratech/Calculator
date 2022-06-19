@@ -25,6 +25,9 @@ function multiply(num1, num2) {
 };
 
 function divide(num1, num2) {
+    if (num2 === 0) {
+        return 'Dividing by zero is nonsense'
+    }
     return (num1 / num2);
 };
 
@@ -43,10 +46,8 @@ function operate(data) {
     }
 }
 
-
 function updateDisplay(displayList) {
     let number = (displayList.join('')).substring(0,9);
-
     let displayOne = document.querySelector('h2');
     if(number.length < 10) {
         displayOne.innerText = parseInt(number);
@@ -72,49 +73,21 @@ function test() {
         }
         hiddenOperator = currentOperator;
     } else if (displayEquals.innerText === '=') {
-        
-
-        console.log(`value1: ${displayOne.innerText}`);
-        console.log(`value2: ${displayMain.innerText}`);
-        console.log(`ecurOperator: ${currentOperator}`);
-        console.log(`ecurrentOperator: ${hiddenOperator}`)
         displayTwo.innerText = '';
         displayEquals.innerText = '';
         displayOne.innerText = displayMain.innerText;
     } else if (!(displayEquals.innerText === '=')) {
-        // currentOperator = Operator;
-
-        console.log(`value1: ${displayOne.innerText}`);
-        console.log(`value2: ${displayMain.innerText}`);
-        console.log(`ncurOperator: ${currentOperator}`);
-        console.log(`nhidOperator: ${hiddenOperator}`)
         value = operate([hiddenOperator, displayOne.innerText, displayMain.innerText]);
-
-
-        displayMain.innerText = value;
-        displayOne.innerText = displayMain.innerText;
-    } else {
-        currentOperator = Operator;
-        console.log(`value1: ${displayOne.innerText}`);
-        console.log(`value2: ${displayMain.innerText}`);
-        console.log(`ecurOperator: ${Operator}`);
-        console.log(`ecurrentOperator: ${currentOperator}`)
-
-        value = operate([Operator, displayOne.innerText, displayMain.innerText]);
         displayMain.innerText = value;
         displayOne.innerText = displayMain.innerText;
     }
 }
 
 function pressButton(e) {
-
     let digit = e.target.id;
-
     if (digits.includes(digit)) {
         numList.push(digit);
         number = updateDisplay(numList);
-
-
     } else if (digit === 'add') {
         if (currentOperator) {
             hiddenOperator = currentOperator
@@ -123,7 +96,6 @@ function pressButton(e) {
         currentOperator = 'add'
         numList = [];
         test();
-
     } else if (digit === 'subtract') {
         if (currentOperator) {
             hiddenOperator = currentOperator
@@ -132,7 +104,6 @@ function pressButton(e) {
         currentOperator = 'subtract'
         numList = [];
         test();
-
     } else if (digit === 'multiply') {
         if (currentOperator) {
             hiddenOperator = currentOperator
@@ -141,7 +112,6 @@ function pressButton(e) {
         currentOperator = 'multiply'
         numList = [];
         test();
-
     } else if (digit === 'divide') {
         if (currentOperator) {
             hiddenOperator = currentOperator
@@ -150,18 +120,16 @@ function pressButton(e) {
         currentOperator = 'divide'
         numList = [];
         test();
-
     } else if (digit === 'equals') {
-        console.log(`value1: ${displayOne.innerText}`);
-        console.log(`value2: ${displayMain.innerText}`);
-        console.log(`ecurrentOperator: ${currentOperator}`);
-        displayTwo.innerText = displayMain.innerText;
-        displayEquals.innerText = '='
-
-        let value = operate([currentOperator, displayOne.innerText, displayMain.innerText]);
-        displayMain.innerText = value;
+        if (displaySign.innerText === '') {
+            // pass
+        } else {
+            displayTwo.innerText = displayMain.innerText;
+            displayEquals.innerText = '='
+            let value = operate([currentOperator, displayOne.innerText, displayMain.innerText]);
+            displayMain.innerText = value;
+        }
     } else if (digit === 'clear') {
-
         numList = [];
         displayOne.innerText = '';
         displayTwo.innerText = '';
@@ -179,10 +147,3 @@ function pressButton(e) {
 
 let calc = document.querySelector('.calculator');
 calc.addEventListener('click', pressButton);
-
-
-
-
-
-
-
