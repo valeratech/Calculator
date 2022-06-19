@@ -1,18 +1,16 @@
-let numList = [0];
 const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-let Operator = 'default';
-let currentOperator = 'default';
-let hiddenOperator = 'default';
+let currentOperator = false;
+let hiddenOperator = false;
+let numList = [0];
 let count = 0;
 let number = 0;
+let value = 0;
 let displayOne = document.querySelector('.first');
 let displaySign = document.querySelector('.operator');
-let displayCurrent = document.querySelector('.current');
-let displayHidden = document.querySelector('.hidden');
 let displayTwo = document.querySelector('.second');
 let displayMain = document.querySelector('h2');
 let displayEquals = document.querySelector('.equal');
-let value = 0;
+
 
 function add(num1, num2) {
     return (num1 + num2);
@@ -72,25 +70,25 @@ function test() {
         } else if (displaySign.innerText === '/') {
             currentOperator = 'divide';
         }
-        currentOperator = Operator;
+        hiddenOperator = currentOperator;
     } else if (displayEquals.innerText === '=') {
         
-        displayHidden.innerText = currentOperator;
+
         console.log(`value1: ${displayOne.innerText}`);
         console.log(`value2: ${displayMain.innerText}`);
-        console.log(`ecurOperator: ${Operator}`);
-        console.log(`ecurrentOperator: ${currentOperator}`)
+        console.log(`ecurOperator: ${currentOperator}`);
+        console.log(`ecurrentOperator: ${hiddenOperator}`)
         displayTwo.innerText = '';
         displayEquals.innerText = '';
         displayOne.innerText = displayMain.innerText;
     } else if (!(displayEquals.innerText === '=')) {
         // currentOperator = Operator;
-        displayHidden.innerText = currentOperator;
+
         console.log(`value1: ${displayOne.innerText}`);
         console.log(`value2: ${displayMain.innerText}`);
-        console.log(`ncurOperator: ${Operator}`);
-        console.log(`ncurrentOperator: ${currentOperator}`)
-        value = operate([Operator, displayOne.innerText, displayMain.innerText]);
+        console.log(`ncurOperator: ${currentOperator}`);
+        console.log(`nhidOperator: ${hiddenOperator}`)
+        value = operate([hiddenOperator, displayOne.innerText, displayMain.innerText]);
 
 
         displayMain.innerText = value;
@@ -116,33 +114,40 @@ function pressButton(e) {
         numList.push(digit);
         number = updateDisplay(numList);
 
-    } else if (digit === 'add') {
 
+    } else if (digit === 'add') {
+        if (currentOperator) {
+            hiddenOperator = currentOperator
+        }
         displaySign.innerText = '+';
-        Operator = 'add'
+        currentOperator = 'add'
         numList = [];
         test();
 
     } else if (digit === 'subtract') {
-
+        if (currentOperator) {
+            hiddenOperator = currentOperator
+        }
         displaySign.innerText = '-';
-        displayHidden.innerText = Operator;
-        Operator = 'subtract'
+        currentOperator = 'subtract'
         numList = [];
         test();
 
     } else if (digit === 'multiply') {
-
+        if (currentOperator) {
+            hiddenOperator = currentOperator
+        }
         displaySign.innerText = 'x';
-        Operator = 'multiply'
+        currentOperator = 'multiply'
         numList = [];
         test();
 
     } else if (digit === 'divide') {
-
+        if (currentOperator) {
+            hiddenOperator = currentOperator
+        }
         displaySign.innerText = '/';
-        displayHidden.innerText = Operator;
-        Operator = 'divide'
+        currentOperator = 'divide'
         numList = [];
         test();
 
@@ -157,13 +162,18 @@ function pressButton(e) {
         displayMain.innerText = value;
     } else if (digit === 'clear') {
 
-        hidden = false;
         numList = [];
         displayOne.innerText = '';
+        displayTwo.innerText = '';
         displayMain.innerText = 0;
-        displaySign.innerText = ''
-        Operator = 'default';
-
+        displaySign.innerText = '';
+        displayEquals.innerText = '';
+        currentOperator = false;
+        hiddenOperator = false;
+        numList = [0];
+        count = 0;
+        number = 0;
+        value = 0;
     }
 }
 

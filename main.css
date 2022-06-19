@@ -81,3 +81,12 @@ aside {
 
 }
 
+.button:hover {
+    background-color: var(--clr-frost);
+
+}
+
+
+.button:active {
+    background-color: var(--clr-neon);
+}
