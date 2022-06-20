@@ -61,7 +61,7 @@ updateDisplay([0]);
 function test() {
     if (count === 0) {
         displayOne.innerText = displayMain.innerText;
-        count++
+        count++;
         if (displaySign.innerText === '+') {
             currentOperator = 'add';
         } else if (displaySign.innerText === '-') {
@@ -124,10 +124,17 @@ function pressButton(e) {
         if (displaySign.innerText === '') {
             // pass
         } else {
-            displayTwo.innerText = displayMain.innerText;
-            displayEquals.innerText = '='
-            let value = operate([currentOperator, displayOne.innerText, displayMain.innerText]);
-            displayMain.innerText = value;
+            if (displayTwo.innerText === '') {
+                displayTwo.innerText = displayMain.innerText;
+                displayEquals.innerText = '='
+                let value = operate([currentOperator, displayOne.innerText, displayMain.innerText]);
+                displayMain.innerText = value;
+            } else {
+                displayOne.innerText = displayMain.innerText;
+                displayEquals.innerText = '='
+                let value = operate([currentOperator, displayTwo.innerText, displayMain.innerText]);
+                displayMain.innerText = value;
+            }
         }
     } else if (digit === 'clear') {
         numList = [];
