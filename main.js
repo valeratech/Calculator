@@ -132,7 +132,8 @@ function pressButton(e) {
             } else {
                 displayOne.innerText = displayMain.innerText;
                 displayEquals.innerText = '='
-                let value = operate([currentOperator, displayTwo.innerText, displayMain.innerText]);
+                // inverted operate input (displayMain - first) to correctly divide when equals is repeatedly pressed
+                let value = operate([currentOperator, displayMain.innerText, displayTwo.innerText]);
                 displayMain.innerText = value;
             }
         }
