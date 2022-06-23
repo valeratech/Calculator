@@ -88,7 +88,24 @@ function pressButton(e) {
     if (digits.includes(digit)) {
         numList.push(digit);
         number = updateDisplay(numList);
-    } else if (digit === 'add') {
+    } else if (digit === 'backspace') {
+
+        if (!(displaySign.innerText === '' && displayEquals.innerText === '')) {
+            console.log("full list");
+            displaySign.innerText = '';
+            displayEquals.innerText = '';
+            displayOne.innerText = '';
+            displayTwo.innerText = '';
+            count = 0;
+        } else if (displaySign.innerText === '' && displayEquals.innerText === '') {
+            //pass
+        } else if (numList.length != 1) {
+            numList.pop();
+            number = updateDisplay(numList);
+        } else {
+        }
+    }
+     else if (digit === 'add') {
         if (currentOperator) {
             hiddenOperator = currentOperator
         }
