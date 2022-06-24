@@ -1,4 +1,4 @@
-const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
 let currentOperator = false;
 let hiddenOperator = false;
 let numList = [0];
@@ -33,8 +33,8 @@ function divide(num1, num2) {
 
 function operate(data) {
     Operator = data[0]
-    numberOne = parseInt(data[1]);
-    numberTwo = parseInt(data[2]);
+    numberOne = parseFloat(data[1]);
+    numberTwo = parseFloat(data[2]);
     if (Operator === 'add') {
         return add(numberOne, numberTwo);
     } else if (Operator === 'subtract') {
@@ -47,11 +47,11 @@ function operate(data) {
 }
 
 function updateDisplay(displayList) {
-    let number = (displayList.join('')).substring(0,9);
+    let number = displayList.join('').substring(0,10);
     let displayOne = document.querySelector('h2');
     if(number.length < 10) {
-        displayOne.innerText = parseInt(number);
-        return number
+        displayOne.innerText = parseFloat(number);
+        return parseFloat(number);
     }
     return number
 }
@@ -86,12 +86,17 @@ function test() {
 function pressButton(e) {
     let digit = e.target.id;
     if (digits.includes(digit)) {
-        numList.push(digit);
-        number = updateDisplay(numList);
+        if (digit === '.') {
+            numList.push(0);
+            numList.push(digit);
+            number = updateDisplay(numList);
+        } else {
+            numList.push(digit);
+            number = updateDisplay(numList);
+        }
     } else if (digit === 'backspace') {
 
         if (!(displaySign.innerText === '' && displayEquals.innerText === '')) {
-            console.log("full list");
             displaySign.innerText = '';
             displayEquals.innerText = '';
             displayOne.innerText = '';
@@ -101,7 +106,7 @@ function pressButton(e) {
             //pass
         } else if (numList.length != 1) {
             numList.pop();
-            number = updateDisplay(numList);
+            number = parseFloat(updateDisplay(numList));
         } else {
         }
     }

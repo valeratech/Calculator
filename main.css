@@ -39,7 +39,7 @@ main {
 .workspace {
     display: flex;
     height: 1500px;
-    width: 800px;
+    width: 850px;
     flex-direction: column;
     padding-right: 40px;
 }
@@ -52,8 +52,7 @@ main {
     display: flex;
     flex-direction: column;
     background-color: #d9f4ff;
-    height: 825px;
-    flex: 0 1 500px;
+    flex: 0 1 auto;
 
 
 }
@@ -64,6 +63,7 @@ main {
 /*border-color: var(--clr-neon);*/
 
 aside {
+    height: 635px;
     flex-basis: 200px;
     align-self: flex-start;
 }
@@ -78,15 +78,17 @@ aside {
 }
 
 .button {
-    flex-basis: 170px;
+    flex-basis: 200px;
     height: 85px;
     margin: 2px;
     border-radius: 5px;
+    border-width: 1px;
 
 }
 
 .button:hover {
     background-color: var(--clr-frost);
+
 
 }
 
