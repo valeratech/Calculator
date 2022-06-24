@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
 }
 
 :root {
@@ -34,6 +35,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .workspace {
@@ -63,19 +65,40 @@ main {
 /*border-color: var(--clr-neon);*/
 
 aside {
-    height: 635px;
-    flex-basis: 200px;
+    height: 600px;
+    flex-basis: 250px;
     align-self: flex-start;
+    /*border-style: solid;*/
+    overflow: auto;
+    padding-right: 25px;
 }
+
+aside p {
+    display: inline;
+    margin: 0 3px;
+
+}
+
+aside h2 {
+    margin-bottom: 25px;
+    text-align: right;
+    font-size: 36px;
+}
+
 
 .delete {
     margin: 20px auto;
+    position: absolute;
+    top: 595px;
+    right: 240px;
 }
 
 .container {
     display: flex;
 
 }
+
+
 
 .button {
     flex-basis: 200px;
@@ -92,7 +115,7 @@ aside {
 
 }
 
-
 .button:active {
     background-color: var(--clr-neon);
 }
+

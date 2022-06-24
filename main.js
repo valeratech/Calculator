@@ -10,6 +10,10 @@ let displaySign = document.querySelector('.operator');
 let displayTwo = document.querySelector('.second');
 let displayMain = document.querySelector('h2');
 let displayEquals = document.querySelector('.equal');
+let displayDisplay = document.querySelector('.display');
+let displayHistory = document.querySelector('.history');
+let displayLast = document.querySelector('.last');
+
 
 
 function add(num1, num2) {
@@ -83,6 +87,19 @@ function test() {
     }
 }
 
+function createHistory() {
+    console.log(displayDisplay.innerHTML)
+    let x = 0
+    let newDiv = document.createElement('div');
+    let header = document.querySelector('.hheader')
+    x++;
+    newDiv.className = 'hchild';
+    newDiv.innerHTML = displayDisplay.innerHTML;
+    let firstChild = displayHistory.firstChild;
+    console.log(header)
+    displayHistory.insertBefore(newDiv, header.nextSibling);
+}
+
 function pressButton(e) {
     let digit = e.target.id;
     if (digits.includes(digit)) {
@@ -95,7 +112,6 @@ function pressButton(e) {
             number = updateDisplay(numList);
         }
     } else if (digit === 'backspace') {
-
         if (!(displaySign.innerText === '' && displayEquals.innerText === '')) {
             displaySign.innerText = '';
             displayEquals.innerText = '';
@@ -103,7 +119,10 @@ function pressButton(e) {
             displayTwo.innerText = '';
             count = 0;
         } else if (displaySign.innerText === '' && displayEquals.innerText === '') {
-            //pass
+            if (numList.length != 1) {
+                numList.pop();
+                number = parseFloat(updateDisplay(numList));
+            }
         } else if (numList.length != 1) {
             numList.pop();
             number = parseFloat(updateDisplay(numList));
@@ -151,12 +170,15 @@ function pressButton(e) {
                 displayEquals.innerText = '='
                 let value = operate([currentOperator, displayOne.innerText, displayMain.innerText]);
                 displayMain.innerText = value;
+                console.log(displayDisplay.innerHTML);
+                createHistory();
             } else {
                 displayOne.innerText = displayMain.innerText;
                 displayEquals.innerText = '='
                 // inverted operate input (displayMain - first) to correctly divide when equals is repeatedly pressed
                 let value = operate([currentOperator, displayMain.innerText, displayTwo.innerText]);
                 displayMain.innerText = value;
+                createHistory();
             }
         }
     } else if (digit === 'clear') {
@@ -177,3 +199,12 @@ function pressButton(e) {
 
 let calc = document.querySelector('.calculator');
 calc.addEventListener('click', pressButton);
+
+let deleteButton = document.querySelector('.delete');
+deleteButton.addEventListener('click', () => {
+    let deleteHistory = document.querySelectorAll('.hchild');
+    console.log(deleteHistory)
+    for(var i = 0; i < deleteHistory.length; i++) {
+        displayHistory.removeChild(deleteHistory[i]);
+}
+})
