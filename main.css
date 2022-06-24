@@ -68,7 +68,6 @@ aside {
     height: 600px;
     flex-basis: 250px;
     align-self: flex-start;
-    border-style: solid;
     overflow: auto;
     padding-right: 25px;
 }
