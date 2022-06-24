@@ -35,7 +35,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+
 }
 
 .workspace {
@@ -68,7 +68,7 @@ aside {
     height: 600px;
     flex-basis: 250px;
     align-self: flex-start;
-    /*border-style: solid;*/
+    border-style: solid;
     overflow: auto;
     padding-right: 25px;
 }
@@ -87,10 +87,14 @@ aside h2 {
 
 
 .delete {
+    width: 120px;
     margin: 20px auto;
-    position: absolute;
     top: 595px;
-    right: 240px;
+    right: 465px;
+}
+
+.last {
+    margin-left: 980px;
 }
 
 .container {
