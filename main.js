@@ -37,9 +37,9 @@ function divide(num1, num2) {
     return (num1 / num2);
 };
 
-// function square(num1, num2) {
-//     return (num1 * num1);
-// }
+function square(num1, num2) {
+    return (num1 * num1);
+}
 
 function operate(data) {
     Operator = data[0]
@@ -53,6 +53,8 @@ function operate(data) {
         return multiply(numberOne, numberTwo);
     } else if (Operator === 'divide') {
         return divide(numberOne, numberTwo);
+    } else if (Operator === 'square') {
+        return square(numberOne, numberTwo);
     }
 }
 
@@ -69,7 +71,18 @@ function updateDisplay(displayList) {
 updateDisplay([0]);
 
 function test() {
+    console.log(hiddenOperator);
+    console.log(displaySign.innerText);
+    console.log(currentOperator);
+
     if (count === 0) {
+        if (displaySign.innerText === 'sq') {
+            displayOne.innerText = displayMain.innerText;
+            hiddenOperator = currentOperator;
+            value = operate([hiddenOperator, displayOne.innerText, displayMain.innerText]);
+            displayMain.innerText = value;
+            displayOne.innerText = displayMain.innerText;
+        }
         displayOne.innerText = displayMain.innerText;
         count++;
         // if (displaySign.innerText === '+') {
@@ -82,6 +95,10 @@ function test() {
         //     currentOperator = 'divide';
         // }
         // hiddenOperator = currentOperator;
+    } else if (displaySign.innerText === 'sq') {
+        value = operate([hiddenOperator, displayOne.innerText, displayMain.innerText]);
+        displayMain.innerText = value;
+        displayOne.innerText = displayMain.innerText;
     } else if (displayEquals.innerText === '=') {
         displayTwo.innerText = '';
         displayEquals.innerText = '';
@@ -92,7 +109,6 @@ function test() {
         displayOne.innerText = displayMain.innerText;
     }
 }
-
 function createHistory() {
     console.log(displayDisplay.innerHTML)
     let x = 0
@@ -108,7 +124,10 @@ function createHistory() {
 
 function pressButton(e) {
     let digit = e.target.id;
-    if (digits.includes(digit)) {
+    if (digit === 'pos-neg') {
+        alert('HI');
+    }
+    else if (digits.includes(digit)) {
         if (digit === '.') {
             numList.push(0);
             numList.push(digit);
@@ -191,8 +210,8 @@ function pressButton(e) {
         if (currentOperator) {
             hiddenOperator = currentOperator
         }
-        displaySign.innerText = 'x';
-        currentOperator = 'multiply'
+        displaySign.innerText = 'sq';
+        currentOperator = 'square'
         numList = [];
         test();
     } else if (digit === 'clear') {
