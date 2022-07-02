@@ -5,6 +5,10 @@
 
 }
 
+body {
+    background-color: #f4f4ff;
+}
+
 :root {
     --clr-neon: hsl(144, 100%, 54%);
     --clr-bg: hsl(323 21% 16%);
@@ -15,6 +19,21 @@
 
 header {
     height: 100px;
+}
+
+.memory {
+    display: flex;
+}
+
+.mem-button {
+    padding: 20px 30px;
+    border-style: none;
+    background-color: #f4f4ff;
+}
+
+.mem-button:hover {
+    background-color: #eaeaea;
+    border-radius: 10px;
 }
 
 .tracker {
@@ -41,7 +60,7 @@ main {
 .workspace {
     display: flex;
     height: 1500px;
-    width: 850px;
+    width: 950px;
     flex-direction: column;
     padding-right: 40px;
 }
@@ -53,7 +72,6 @@ main {
 .calculator {
     display: flex;
     flex-direction: column;
-    background-color: #d9f4ff;
     flex: 0 1 auto;
 
 
@@ -104,11 +122,14 @@ aside h2 {
 
 
 .button {
-    flex-basis: 200px;
+    flex-basis: 100%;
     height: 85px;
     margin: 2px;
     border-radius: 5px;
     border-width: 1px;
+    background-color: #f9f9f9;
+    border-color: #eaeaff;
+    font-size: 18px;
 
 }
 
