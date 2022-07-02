@@ -16,8 +16,6 @@ let displayLast = document.querySelector('.last');
 let dispLaySquare = document.querySelector('#square');
 
 
-
-
 function add(num1, num2) {
     return (num1 + num2);
 };
@@ -71,12 +69,8 @@ function updateDisplay(displayList) {
 updateDisplay([0]);
 
 function test() {
-    console.log(hiddenOperator);
-    console.log(displaySign.innerText);
-    console.log(currentOperator);
-
     if (count === 0) {
-        if (displaySign.innerText === 'sq') {
+        if (displaySign.innerText === '(sq)') {
             displayOne.innerText = displayMain.innerText;
             hiddenOperator = currentOperator;
             value = operate([hiddenOperator, displayOne.innerText, displayMain.innerText]);
@@ -95,7 +89,7 @@ function test() {
         //     currentOperator = 'divide';
         // }
         // hiddenOperator = currentOperator;
-    } else if (displaySign.innerText === 'sq') {
+    } else if (displaySign.innerText === '(sq)') {
         value = operate([hiddenOperator, displayOne.innerText, displayMain.innerText]);
         displayMain.innerText = value;
         displayOne.innerText = displayMain.innerText;
@@ -109,8 +103,8 @@ function test() {
         displayOne.innerText = displayMain.innerText;
     }
 }
+
 function createHistory() {
-    console.log(displayDisplay.innerHTML)
     let x = 0
     let newDiv = document.createElement('div');
     let header = document.querySelector('.history-header')
@@ -118,14 +112,25 @@ function createHistory() {
     newDiv.className = 'hchild';
     newDiv.innerHTML = displayDisplay.innerHTML;
     let firstChild = displayHistory.firstChild;
-    console.log(header)
     displayHistory.insertBefore(newDiv, header.nextSibling);
 }
 
 function pressButton(e) {
     let digit = e.target.id;
+
     if (digit === 'pos-neg') {
-        alert('HI');
+        console.log(numList);
+        if (displayMain.innerText > 0) {
+            console.log('positive');
+            number = -Math.abs(displayMain.innerText);
+            displayMain.innerText = number;
+        } else if (displayMain.innerText < 0) {
+            console.log('negative');
+            number = Math.abs(displayMain.innerText);
+            displayMain.innerText = number;
+        } else {
+            number = parseFloat(updateDisplay(numList)) * -1;
+        }
     }
     else if (digits.includes(digit)) {
         if (digit === '.') {
@@ -158,6 +163,7 @@ function pressButton(e) {
         if (currentOperator) {
             hiddenOperator = currentOperator
         }
+        console.log(displayMain.innerText);
         displaySign.innerText = '+';
         currentOperator = 'add'
         numList = [];
@@ -195,7 +201,6 @@ function pressButton(e) {
                 displayEquals.innerText = '='
                 let value = operate([currentOperator, displayOne.innerText, displayMain.innerText]);
                 displayMain.innerText = value;
-                console.log(displayDisplay.innerHTML);
                 createHistory();
             } else {
                 displayOne.innerText = displayMain.innerText;
@@ -210,7 +215,7 @@ function pressButton(e) {
         if (currentOperator) {
             hiddenOperator = currentOperator
         }
-        displaySign.innerText = 'sq';
+        displaySign.innerText = '(sq)';
         currentOperator = 'square'
         numList = [];
         test();
@@ -236,7 +241,6 @@ calc.addEventListener('click', pressButton);
 let deleteButton = document.querySelector('.delete');
 deleteButton.addEventListener('click', () => {
     let deleteHistory = document.querySelectorAll('.hchild');
-    console.log(deleteHistory)
     for(var i = 0; i < deleteHistory.length; i++) {
         displayHistory.removeChild(deleteHistory[i]);
 }
