@@ -13,6 +13,7 @@ let displayEquals = document.querySelector('.equal');
 let displayDisplay = document.querySelector('.display');
 let displayHistory = document.querySelector('.history');
 let displayLast = document.querySelector('.last');
+let dispLaySquare = document.querySelector('#square');
 
 
 
@@ -35,6 +36,10 @@ function divide(num1, num2) {
     }
     return (num1 / num2);
 };
+
+// function square(num1, num2) {
+//     return (num1 * num1);
+// }
 
 function operate(data) {
     Operator = data[0]
@@ -67,16 +72,16 @@ function test() {
     if (count === 0) {
         displayOne.innerText = displayMain.innerText;
         count++;
-        if (displaySign.innerText === '+') {
-            currentOperator = 'add';
-        } else if (displaySign.innerText === '-') {
-            currentOperator = 'subtract';
-        } else if (displaySign.innerText === '*') {
-            currentOperator = 'multiply';
-        } else if (displaySign.innerText === '/') {
-            currentOperator = 'divide';
-        }
-        hiddenOperator = currentOperator;
+        // if (displaySign.innerText === '+') {
+        //     currentOperator = 'add';
+        // } else if (displaySign.innerText === '-') {
+        //     currentOperator = 'subtract';
+        // } else if (displaySign.innerText === 'X') {
+        //     currentOperator = 'multiply';
+        // } else if (displaySign.innerText === '/') {
+        //     currentOperator = 'divide';
+        // }
+        // hiddenOperator = currentOperator;
     } else if (displayEquals.innerText === '=') {
         displayTwo.innerText = '';
         displayEquals.innerText = '';
@@ -182,6 +187,14 @@ function pressButton(e) {
                 createHistory();
             }
         }
+    } else if (digit === 'square') {
+        if (currentOperator) {
+            hiddenOperator = currentOperator
+        }
+        displaySign.innerText = 'x';
+        currentOperator = 'multiply'
+        numList = [];
+        test();
     } else if (digit === 'clear') {
         numList = [];
         displayOne.innerText = '';
