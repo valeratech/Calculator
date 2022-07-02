@@ -16,6 +16,7 @@ let displayLast = document.querySelector('.last');
 
 
 
+
 function add(num1, num2) {
     return (num1 + num2);
 };
@@ -91,7 +92,7 @@ function createHistory() {
     console.log(displayDisplay.innerHTML)
     let x = 0
     let newDiv = document.createElement('div');
-    let header = document.querySelector('.hheader')
+    let header = document.querySelector('.history-header')
     x++;
     newDiv.className = 'hchild';
     newDiv.innerHTML = displayDisplay.innerHTML;
