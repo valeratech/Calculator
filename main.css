@@ -60,7 +60,7 @@ main {
 .workspace {
     display: flex;
     height: 1500px;
-    width: 950px;
+    width: 1000px;
     flex-direction: column;
     padding-right: 40px;
 }
