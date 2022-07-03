@@ -117,8 +117,22 @@ function createHistory() {
 
 function pressButton(e) {
     let digit = e.target.id;
-
-    if (digit === 'pos-neg') {
+    if (digits.includes(digit)) {
+        console.log(numList)
+        if (digit === '.') {
+            if (numList == '') {
+                numList.push(0);
+                numList.push(digit);
+                number = updateDisplay(numList);
+            } else {
+                numList.push(digit);
+                number = updateDisplay(numList)
+            }
+        } else {
+            numList.push(digit);
+            number = updateDisplay(numList);
+        }
+    } else if (digit === 'pos-neg') {
         console.log(numList);
         if (displayMain.innerText > 0) {
             console.log('positive');
@@ -130,16 +144,6 @@ function pressButton(e) {
             displayMain.innerText = number;
         } else {
             number = parseFloat(updateDisplay(numList)) * -1;
-        }
-    }
-    else if (digits.includes(digit)) {
-        if (digit === '.') {
-            numList.push(0);
-            numList.push(digit);
-            number = updateDisplay(numList);
-        } else {
-            numList.push(digit);
-            number = updateDisplay(numList);
         }
     } else if (digit === 'backspace') {
         if (!(displaySign.innerText === '' && displayEquals.innerText === '')) {
