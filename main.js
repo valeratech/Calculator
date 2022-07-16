@@ -83,6 +83,7 @@ function testOperator() {
             value = operate([hiddenOperator, displayFirst.innerText, displayMain.innerText]);
             displayMain.innerText = value;
             displayFirst.innerText = displayMain.innerText;
+            createHistory();
         } else if (displayOperator.innerText === '1/') {
             displayFirst.innerText = 1;
             hiddenOperator = currentOperator;
@@ -90,6 +91,7 @@ function testOperator() {
             value = operate([hiddenOperator, displayFirst.innerText, displayMain.innerText]);
             displayMain.innerText = value;
             displayFirst.innerText = '';
+            createHistory();
         }
         displayFirst.innerText = displayMain.innerText;
         count++;
@@ -107,12 +109,14 @@ function testOperator() {
         value = operate([hiddenOperator, displayFirst.innerText, displayMain.innerText]);
         displayMain.innerText = value;
         displayFirst.innerText = displayMain.innerText;
+        createHistory();
     } else if (displayOperator.innerText === '1/') {
         displayFirst.innerText = 1;
         displayOperator.innerText = `1/(${displayMain.innerText})`;
         value = operate([hiddenOperator, displayFirst.innerText, displayMain.innerText]);
         displayMain.innerText = value;
         displayFirst.innerText = displayMain.innerText;
+        createHistory();
     } else if (displayEquals.innerText === '=') {
         displaySecond.innerText = '';
         displayEquals.innerText = '';
@@ -121,6 +125,7 @@ function testOperator() {
         value = operate([hiddenOperator, displayFirst.innerText, displayMain.innerText]);
         displayMain.innerText = value;
         displayFirst.innerText = displayMain.innerText;
+        createHistory();
     }
 }
 

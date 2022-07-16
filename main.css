@@ -108,6 +108,14 @@ aside h2 {
     margin: 20px auto;
     top: 595px;
     right: 465px;
+    background-color: #f4f4ff;
+    border-style: none;
+    font-size: 1.5rem;
+}
+
+.delete:hover {
+    background-color: #e7e7e7;
+    border-radius: 10px;
 }
 
 .last {
@@ -116,7 +124,6 @@ aside h2 {
 
 .container {
     display: flex;
-
 }
 
 .button {
