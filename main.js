@@ -41,7 +41,7 @@ function square(num1, num2) {
 }
 
 function reciprocal(num1, num2) {
-    return (1 / num1);
+    return (num1 / num2);
 }
 
 function operate(data) {
@@ -76,7 +76,6 @@ function updateDisplay(displayList) {
 updateDisplay([0]);
 
 function testOperator() {
-    console.log(displayOperator.innerText);
     if (count === 0) {
         if (displayOperator.innerText === '(sq)') {
             displayFirst.innerText = displayMain.innerText;
@@ -84,6 +83,13 @@ function testOperator() {
             value = operate([hiddenOperator, displayFirst.innerText, displayMain.innerText]);
             displayMain.innerText = value;
             displayFirst.innerText = displayMain.innerText;
+        } else if (displayOperator.innerText === '1/') {
+            displayFirst.innerText = 1;
+            hiddenOperator = currentOperator;
+            displayOperator.innerText = `1/(${displayMain.innerText})`;
+            value = operate([hiddenOperator, displayFirst.innerText, displayMain.innerText]);
+            displayMain.innerText = value;
+            displayFirst.innerText = '';
         }
         displayFirst.innerText = displayMain.innerText;
         count++;
@@ -101,8 +107,12 @@ function testOperator() {
         value = operate([hiddenOperator, displayFirst.innerText, displayMain.innerText]);
         displayMain.innerText = value;
         displayFirst.innerText = displayMain.innerText;
-    } else if (displayOperator.innerText === `1/(${displayMain.innerText})`) {
-        alert('hello');
+    } else if (displayOperator.innerText === '1/') {
+        displayFirst.innerText = 1;
+        displayOperator.innerText = `1/(${displayMain.innerText})`;
+        value = operate([hiddenOperator, displayFirst.innerText, displayMain.innerText]);
+        displayMain.innerText = value;
+        displayFirst.innerText = displayMain.innerText;
     } else if (displayEquals.innerText === '=') {
         displaySecond.innerText = '';
         displayEquals.innerText = '';
@@ -128,7 +138,6 @@ function createHistory() {
 function pressButton(e) {
     let digit = e.target.id;
     if (digits.includes(digit)) {
-        console.log(numList)
         if (digit === '.') {
             if (numList == '') {
                 numList.push(0);
@@ -143,13 +152,10 @@ function pressButton(e) {
             number = updateDisplay(numList);
         }
     } else if (digit === 'pos-neg') {
-        console.log(numList);
         if (displayMain.innerText > 0) {
-            console.log('positive');
             number = -Math.abs(displayMain.innerText);
             displayMain.innerText = number;
         } else if (displayMain.innerText < 0) {
-            console.log('negative');
             number = Math.abs(displayMain.innerText);
             displayMain.innerText = number;
         } else {
@@ -177,7 +183,6 @@ function pressButton(e) {
         if (currentOperator) {
             hiddenOperator = currentOperator
         }
-        console.log(displayMain.innerText);
         displayOperator.innerText = '+';
         currentOperator = 'add'
         numList = [];
@@ -237,7 +242,7 @@ function pressButton(e) {
         if (currentOperator) {
             hiddenOperator = currentOperator
         }
-        displayOperator.innerText = `1/(${displayMain.innerText})`;
+        displayOperator.innerText = '1/';
         currentOperator = 'reciprocal';
         numList = [];
         testOperator();
