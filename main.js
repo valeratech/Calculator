@@ -14,6 +14,7 @@ let displayDisplay = document.querySelector('.display');
 let displayHistory = document.querySelector('.history');
 let displayLast = document.querySelector('.last');
 let dispLaySquare = document.querySelector('#square');
+let display
 
 
 function add(num1, num2) {
@@ -37,6 +38,10 @@ function divide(num1, num2) {
 
 function square(num1, num2) {
     return (num1 * num1);
+}
+
+function inverse(num1, num2) {
+    return (1 / num1);
 }
 
 function operate(data) {
@@ -89,6 +94,10 @@ function test() {
         //     currentOperator = 'divide';
         // }
         // hiddenOperator = currentOperator;
+    } else if (displaySign.innerText === '(sq)') {
+        value = operate([hiddenOperator, displayOne.innerText, displayMain.innerText]);
+        displayMain.innerText = value;
+        displayOne.innerText = displayMain.innerText;
     } else if (displaySign.innerText === '(sq)') {
         value = operate([hiddenOperator, displayOne.innerText, displayMain.innerText]);
         displayMain.innerText = value;
@@ -223,6 +232,14 @@ function pressButton(e) {
         currentOperator = 'square'
         numList = [];
         test();
+    } else if (digit === 'reciprocal') {
+        // if (currentOperator) {
+        //     hiddenOperator = currentOperator
+        // }
+        displaySign.innerText = `1/(${displayMain.innerText})`;
+        currentOperator = 'reciprocal'
+        numList = [];
+        test();
     } else if (digit === 'clear') {
         numList = [];
         displayOne.innerText = '';
@@ -236,6 +253,8 @@ function pressButton(e) {
         count = 0;
         number = 0;
         value = 0;
+    } else if (digit === 'clear-entry') {
+        displayMain.innerText = 0;
     }
 }
 
