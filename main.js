@@ -5,9 +5,9 @@ let numList = [0];
 let count = 0;
 let number = 0;
 let value = 0;
-let displayOne = document.querySelector('.first');
-let displaySign = document.querySelector('.operator');
-let displayTwo = document.querySelector('.second');
+let displayFirst = document.querySelector('.first-display');
+let displayOperator = document.querySelector('.operator');
+let displaySecond = document.querySelector('.second-display');
 let displayMain = document.querySelector('h2');
 let displayEquals = document.querySelector('.equal');
 let displayDisplay = document.querySelector('.display');
@@ -40,7 +40,7 @@ function square(num1, num2) {
     return (num1 * num1);
 }
 
-function inverse(num1, num2) {
+function reciprocal(num1, num2) {
     return (1 / num1);
 }
 
@@ -58,14 +58,16 @@ function operate(data) {
         return divide(numberOne, numberTwo);
     } else if (Operator === 'square') {
         return square(numberOne, numberTwo);
+    } else if (Operator === 'reciprocal') {
+        return reciprocal(numberOne, numberTwo);
     }
 }
 
 function updateDisplay(displayList) {
     let number = displayList.join('').substring(0,10);
-    let displayOne = document.querySelector('h2');
+    let displayFirst = document.querySelector('h2');
     if(number.length < 10) {
-        displayOne.innerText = parseFloat(number);
+        displayFirst.innerText = parseFloat(number);
         return parseFloat(number);
     }
     return number
@@ -73,43 +75,42 @@ function updateDisplay(displayList) {
 
 updateDisplay([0]);
 
-function test() {
+function testOperator() {
+    console.log(displayOperator.innerText);
     if (count === 0) {
-        if (displaySign.innerText === '(sq)') {
-            displayOne.innerText = displayMain.innerText;
+        if (displayOperator.innerText === '(sq)') {
+            displayFirst.innerText = displayMain.innerText;
             hiddenOperator = currentOperator;
-            value = operate([hiddenOperator, displayOne.innerText, displayMain.innerText]);
+            value = operate([hiddenOperator, displayFirst.innerText, displayMain.innerText]);
             displayMain.innerText = value;
-            displayOne.innerText = displayMain.innerText;
+            displayFirst.innerText = displayMain.innerText;
         }
-        displayOne.innerText = displayMain.innerText;
+        displayFirst.innerText = displayMain.innerText;
         count++;
-        // if (displaySign.innerText === '+') {
+        // if (displayOperator.innerText === '+') {
         //     currentOperator = 'add';
-        // } else if (displaySign.innerText === '-') {
+        // } else if (displayOperator.innerText === '-') {
         //     currentOperator = 'subtract';
-        // } else if (displaySign.innerText === 'X') {
+        // } else if (displayOperator.innerText === 'X') {
         //     currentOperator = 'multiply';
-        // } else if (displaySign.innerText === '/') {
+        // } else if (displayOperator.innerText === '/') {
         //     currentOperator = 'divide';
         // }
         // hiddenOperator = currentOperator;
-    } else if (displaySign.innerText === '(sq)') {
-        value = operate([hiddenOperator, displayOne.innerText, displayMain.innerText]);
+    } else if (displayOperator.innerText === '(sq)') {
+        value = operate([hiddenOperator, displayFirst.innerText, displayMain.innerText]);
         displayMain.innerText = value;
-        displayOne.innerText = displayMain.innerText;
-    } else if (displaySign.innerText === '(sq)') {
-        value = operate([hiddenOperator, displayOne.innerText, displayMain.innerText]);
-        displayMain.innerText = value;
-        displayOne.innerText = displayMain.innerText;
+        displayFirst.innerText = displayMain.innerText;
+    } else if (displayOperator.innerText === `1/(${displayMain.innerText})`) {
+        alert('hello');
     } else if (displayEquals.innerText === '=') {
-        displayTwo.innerText = '';
+        displaySecond.innerText = '';
         displayEquals.innerText = '';
-        displayOne.innerText = displayMain.innerText;
+        displayFirst.innerText = displayMain.innerText;
     } else if (!(displayEquals.innerText === '=')) {
-        value = operate([hiddenOperator, displayOne.innerText, displayMain.innerText]);
+        value = operate([hiddenOperator, displayFirst.innerText, displayMain.innerText]);
         displayMain.innerText = value;
-        displayOne.innerText = displayMain.innerText;
+        displayFirst.innerText = displayMain.innerText;
     }
 }
 
@@ -155,13 +156,13 @@ function pressButton(e) {
             number = parseFloat(updateDisplay(numList)) * -1;
         }
     } else if (digit === 'backspace') {
-        if (!(displaySign.innerText === '' && displayEquals.innerText === '')) {
-            displaySign.innerText = '';
+        if (!(displayOperator.innerText === '' && displayEquals.innerText === '')) {
+            displayOperator.innerText = '';
             displayEquals.innerText = '';
-            displayOne.innerText = '';
-            displayTwo.innerText = '';
+            displayFirst.innerText = '';
+            displaySecond.innerText = '';
             count = 0;
-        } else if (displaySign.innerText === '' && displayEquals.innerText === '') {
+        } else if (displayOperator.innerText === '' && displayEquals.innerText === '') {
             if (numList.length != 1) {
                 numList.pop();
                 number = parseFloat(updateDisplay(numList));
@@ -177,49 +178,49 @@ function pressButton(e) {
             hiddenOperator = currentOperator
         }
         console.log(displayMain.innerText);
-        displaySign.innerText = '+';
+        displayOperator.innerText = '+';
         currentOperator = 'add'
         numList = [];
-        test();
+        testOperator();
     } else if (digit === 'subtract') {
         if (currentOperator) {
             hiddenOperator = currentOperator
         }
-        displaySign.innerText = '-';
+        displayOperator.innerText = '-';
         currentOperator = 'subtract'
         numList = [];
-        test();
+        testOperator();
     } else if (digit === 'multiply') {
         if (currentOperator) {
             hiddenOperator = currentOperator
         }
-        displaySign.innerText = 'x';
+        displayOperator.innerText = 'x';
         currentOperator = 'multiply'
         numList = [];
-        test();
+        testOperator();
     } else if (digit === 'divide') {
         if (currentOperator) {
             hiddenOperator = currentOperator
         }
-        displaySign.innerText = '/';
+        displayOperator.innerText = '/';
         currentOperator = 'divide'
         numList = [];
-        test();
+        testOperator();
     } else if (digit === 'equals') {
-        if (displaySign.innerText === '') {
+        if (displayOperator.innerText === '') {
             // pass
         } else {
-            if (displayTwo.innerText === '') {
-                displayTwo.innerText = displayMain.innerText;
+            if (displaySecond.innerText === '') {
+                displaySecond.innerText = displayMain.innerText;
                 displayEquals.innerText = '='
-                let value = operate([currentOperator, displayOne.innerText, displayMain.innerText]);
+                let value = operate([currentOperator, displayFirst.innerText, displayMain.innerText]);
                 displayMain.innerText = value;
                 createHistory();
             } else {
-                displayOne.innerText = displayMain.innerText;
+                displayFirst.innerText = displayMain.innerText;
                 displayEquals.innerText = '='
                 // inverted operate input (displayMain - first) to correctly divide when equals is repeatedly pressed
-                let value = operate([currentOperator, displayMain.innerText, displayTwo.innerText]);
+                let value = operate([currentOperator, displayMain.innerText, displaySecond.innerText]);
                 displayMain.innerText = value;
                 createHistory();
             }
@@ -228,24 +229,24 @@ function pressButton(e) {
         if (currentOperator) {
             hiddenOperator = currentOperator
         }
-        displaySign.innerText = '(sq)';
-        currentOperator = 'square'
+        displayOperator.innerText = '(sq)';
+        currentOperator = 'square';
         numList = [];
-        test();
+        testOperator();
     } else if (digit === 'reciprocal') {
-        // if (currentOperator) {
-        //     hiddenOperator = currentOperator
-        // }
-        displaySign.innerText = `1/(${displayMain.innerText})`;
-        currentOperator = 'reciprocal'
+        if (currentOperator) {
+            hiddenOperator = currentOperator
+        }
+        displayOperator.innerText = `1/(${displayMain.innerText})`;
+        currentOperator = 'reciprocal';
         numList = [];
-        test();
+        testOperator();
     } else if (digit === 'clear') {
         numList = [];
-        displayOne.innerText = '';
-        displayTwo.innerText = '';
+        displayFirst.innerText = '';
+        displaySecond.innerText = '';
         displayMain.innerText = 0;
-        displaySign.innerText = '';
+        displayOperator.innerText = '';
         displayEquals.innerText = '';
         currentOperator = false;
         hiddenOperator = false;
