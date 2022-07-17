@@ -14,27 +14,27 @@ let displayDisplay = document.querySelector('.display');
 let displayHistory = document.querySelector('.history');
 let displayLast = document.querySelector('.last');
 let dispLaySquare = document.querySelector('#square');
-let display
+let displayRoot = document.querySelector("#square-root");
 
 
 function add(num1, num2) {
     return (num1 + num2);
-};
+}
 
 function substract(num1, num2) {
     return (num1 - num2);
-};
+}
 
 function multiply(num1, num2) {
     return (num1 * num2);
-};
+}
 
 function divide(num1, num2) {
     if (num2 === 0) {
         return 'Dividing by zero is nonsense'
     }
     return (num1 / num2);
-};
+}
 
 function square(num1, num2) {
     return (num1 * num1);
@@ -42,6 +42,11 @@ function square(num1, num2) {
 
 function reciprocal(num1, num2) {
     return (num1 / num2);
+}
+
+function squareRoot(num1, num2) {
+    result = Math.sqrt(num1);
+    return result;
 }
 
 function operate(data) {
@@ -60,6 +65,8 @@ function operate(data) {
         return square(numberOne, numberTwo);
     } else if (Operator === 'reciprocal') {
         return reciprocal(numberOne, numberTwo);
+    } else if (Operator === 'square-root') {
+        return squareRoot(numberOne, numberTwo);
     }
 }
 
@@ -92,19 +99,18 @@ function testOperator() {
             displayMain.innerText = value;
             displayFirst.innerText = '';
             createHistory();
+        } else if (displayOperator.innerHTML === '√') {
+            // User inner HTML to test for actual symbol and not its code symbol to return true
+            hiddenOperator = currentOperator;
+            displaySecond.innerText = displayMain.innerText
+            value = operate([hiddenOperator, displaySecond.innerText, displayMain.innerText]);
+            displayFirst.innerText = '';
+            displayMain.innerText = value;
+            createHistory();
         }
+        // ***** THIS CODE MUST BE EDITED TO DISPLAY OUTPUT FROM THE CODEBLOCKS ABOVE***** //
         displayFirst.innerText = displayMain.innerText;
         count++;
-        // if (displayOperator.innerText === '+') {
-        //     currentOperator = 'add';
-        // } else if (displayOperator.innerText === '-') {
-        //     currentOperator = 'subtract';
-        // } else if (displayOperator.innerText === 'X') {
-        //     currentOperator = 'multiply';
-        // } else if (displayOperator.innerText === '/') {
-        //     currentOperator = 'divide';
-        // }
-        // hiddenOperator = currentOperator;
     } else if (displayOperator.innerText === '(sq)') {
         value = operate([hiddenOperator, displayFirst.innerText, displayMain.innerText]);
         displayMain.innerText = value;
@@ -241,7 +247,13 @@ function pressButton(e) {
         }
         displayOperator.innerText = '(sq)';
         currentOperator = 'square';
-        numList = [];
+        testOperator();
+    } else if (digit === 'square-root') {
+        if (currentOperator) {
+            hiddenOperator = currentOperator
+        }
+        displayOperator.innerHTML = '&#x221A';
+        currentOperator = 'square-root';
         testOperator();
     } else if (digit === 'reciprocal') {
         if (currentOperator) {

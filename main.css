@@ -146,3 +146,84 @@ aside h2 {
     background-color: var(--clr-neon);
 }
 
+/* hides the checkbox from site */
+input {
+    display: none;
+}
+
+label,
+ul {
+    border: 1px solid #cecfd5;
+    border-radius: 6px;
+}
+
+label {
+    color: #0087cc;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 22px;
+    padding-top: 13px;
+    text-align: center;
+    transition: all .05s ease;
+    width: 50px;
+    height: 50px;
+}
+
+label:hover {
+    color: #ff7b29;
+    text-align: center;
+}
+
+label:active {
+    color: #0087cc;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Upon clicking the label, input/label box gains shadow and changes (gray) color */
+input:checked + label {
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+    color: #9799a7;
+}
+
+/* sets the max height to 0. Since there is content inside the overflow property hides content */
+
+nav {
+    max-height: 0;
+    overflow: hidden;
+    transition: all .05s ease;
+}
+
+/* upon being check sets the max-height large enough to display content */
+input:checked ~ nav {
+    max-height: 500px;
+}
+
+/* The rest of the configuration below styles the content */
+ul {
+    list-style: none;
+    margin: 8px 0 0 0;
+    padding: 0;
+    width: 100px;
+}
+
+li {
+    border-bottom: 1px solid #cecfd5;
+}
+
+li:last-child {
+    border-bottom: 0;
+}
+
+a {
+    color: #0087cc;
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ff7b29;
+}
+
+
