@@ -17,10 +17,6 @@ body {
     --clr-frost: hsl(192, 99%, 50%);
 }
 
-header {
-    height: 100px;
-}
-
 .memory {
     display: flex;
 }
@@ -67,6 +63,7 @@ main {
 
 .display {
     align-self: flex-end;
+    height: 100px;
 }
 
 .calculator {
@@ -96,7 +93,7 @@ aside p {
 }
 
 aside h2 {
-    margin-bottom: 30px;
+    margin-bottom: 35px;
     text-align: right;
     font-size: 32px;
     font-weight: bold;
@@ -186,8 +183,9 @@ input:checked + label {
     color: #9799a7;
 }
 
+/* The max-height property defines the maximum height of an element. */
+/* If the content is larger than the maximum height, it will overflow. */
 /* sets the max height to 0. Since there is content inside the overflow property hides content */
-
 nav {
     max-height: 0;
     overflow: hidden;
@@ -207,6 +205,10 @@ ul {
     width: 100px;
 }
 
+li:first-child {
+    height: 50px;
+}
+
 li {
     border-bottom: 1px solid #cecfd5;
 }
@@ -224,6 +226,12 @@ a {
 
 a:hover {
     color: #ff7b29;
+}
+
+.header-sidebar h3 {
+    display: inline-block;
+    padding-right: 20px;
+    margin-bottom: 30px;
 }
 
 /* Create Background Blue Color for Equals Sign */
