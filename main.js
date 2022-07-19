@@ -45,8 +45,17 @@ function reciprocal(num1, num2) {
 }
 
 function squareRoot(num1, num2) {
-    result = Math.sqrt(num1);
+    let result = Math.sqrt(num1);
     return result;
+}
+
+function percentageOne(num1, num2) {
+    return (num1 * (num2 * .01));
+}
+
+function percentageTwo(num1, num2) {
+    let x = (num1 * .01);
+    return (num1 * x);
 }
 
 function operate(data) {
@@ -67,6 +76,10 @@ function operate(data) {
         return reciprocal(numberOne, numberTwo);
     } else if (Operator === 'square-root') {
         return squareRoot(numberOne, numberTwo);
+    } else if (Operator === 'percentageOne') {
+        return percentageOne(numberOne, numberTwo)
+    } else if (Operator === 'percentageTwo') {
+        return percentageTwo(numberOne, numberTwo)
     }
 }
 
@@ -83,6 +96,7 @@ function updateDisplay(displayList) {
 updateDisplay([0]);
 
 function testOperator() {
+    // This function test certain conditions such as the order of calculations when executing calculating-operators
     if (count === 0) {
         if (displayOperator.innerText === '(sq)') {
             displayFirst.innerText = displayMain.innerText;
@@ -123,6 +137,8 @@ function testOperator() {
         displayMain.innerText = value;
         displayFirst.innerText = displayMain.innerText;
         createHistory();
+    } else if (displayOperator.innerText === '%') {
+        console.log(hiddenOperator);
     } else if (displayEquals.innerText === '=') {
         displaySecond.innerText = '';
         displayEquals.innerText = '';
@@ -263,6 +279,20 @@ function pressButton(e) {
         currentOperator = 'reciprocal';
         numList = [];
         testOperator();
+    } else if (digit === 'percent') {
+        // This condition calls the calculate percentage function directly without using the test function
+        let opArray = ['+', '-', 'x', '/'];
+        if (displayFirst.innerText != displayMain.innerText) {
+            value = operate(['percentageOne', displayFirst.innerText, displayMain.innerText]);
+            displayMain.innerText = value;
+        } else if (!opArray.includes(displayOperator.innerText)) {
+            displayMain.innerText = 0;
+            displayFirst.innerText = 0;
+            numList = [0];
+        } else if (opArray.includes(displayOperator.innerText)) {
+            value = operate(['percentageTwo', displayFirst.innerText, displayMain.innerText]);
+            displayMain.innerText = value;
+        }
     } else if (digit === 'clear') {
         numList = [];
         displayFirst.innerText = '';
@@ -278,6 +308,7 @@ function pressButton(e) {
         value = 0;
     } else if (digit === 'clear-entry') {
         displayMain.innerText = 0;
+        numList = [0]
     }
 }
 
