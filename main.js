@@ -11,11 +11,15 @@ let displaySecond = document.querySelector('.second-display');
 let displayMain = document.querySelector('h2');
 let displayEquals = document.querySelector('.equal');
 let displayDisplay = document.querySelector('.display');
-let displayHistory = document.querySelector('.history');
+let displayHistory = document.querySelector('.sidebar');
 let displayLast = document.querySelector('.last');
 let dispLaySquare = document.querySelector('#square');
 let displayRoot = document.querySelector("#square-root");
-
+let memClear = document.querySelector(".mem-clear");
+let memRestore = document.querySelector(".mem-restore");
+let memAdd = document.querySelector(".mem-add");
+let memSubtract = document.querySelector(".mem-subtract");
+let memStore = document.querySelector(".mem-store");
 
 function add(num1, num2) {
     return (num1 + num2);
@@ -154,15 +158,18 @@ function testOperator() {
 function createHistory() {
     let x = 0
     let newDiv = document.createElement('div');
-    let header = document.querySelector('.history-header')
+    let placeholder = document.querySelector('.placeholder')
     x++;
-    newDiv.className = 'hchild';
+    newDiv.className = 'deleteAll';
     newDiv.innerHTML = displayDisplay.innerHTML;
-    let firstChild = displayHistory.firstChild;
-    displayHistory.insertBefore(newDiv, header.nextSibling);
+    displayHistory.insertBefore(newDiv, placeholder.nextSibling);
 }
 
 function pressButton(e) {
+    console.log(e.target.className);
+    if (e.target.className === "mem-button mem-subtract") {
+        alert('hi');
+    }
     let digit = e.target.id;
     if (digits.includes(digit)) {
         if (digit === '.') {
@@ -317,7 +324,7 @@ calc.addEventListener('click', pressButton);
 
 let deleteButton = document.querySelector('.delete');
 deleteButton.addEventListener('click', () => {
-    let deleteHistory = document.querySelectorAll('.hchild');
+    let deleteHistory = document.querySelectorAll('.deleteAll');
     for(var i = 0; i < deleteHistory.length; i++) {
         displayHistory.removeChild(deleteHistory[i]);
 }

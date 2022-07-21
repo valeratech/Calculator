@@ -9,14 +9,14 @@
 <body>
 <header>
     <input type="checkbox" id="toggle">
-    <label for="toggle">&#9776;</label>
+    <label for="toggle" class="menu">&#9776;</label>
     <nav>
         <ul>
             <li><a href="#"></a></li>
             <li><a href="#">Scientific</a></li>
-            <li><a href="#">|Reserved|</a></li>
-            <li><a href="#">|Reserved|</a></li>
-            <li><a href="#">|Reserved|</a></li>
+            <li><a href="#">| Reserved |</a></li>
+            <li><a href="#">| Reserved |</a></li>
+            <li><a href="#">| Reserved |</a></li>
         </ul>
     </nav>
 </header>
@@ -31,14 +31,14 @@
             </div>
             <div><h2>0</h2></div>
         </header>
-        <div class="memory">
-            <button type="button" class="mem-button">MC</button>
-            <button type="button" class="mem-button">MR</button>
-            <button type="button" class="mem-button">M+</button>
-            <button type="button" class="mem-button">M-</button>
-            <button type="button" class="mem-button">MS</button>
-        </div>
         <div class="calculator">
+            <div class="memory-container">
+                <button type="button" class="mem-button mem-clear">MC</button>
+                <button type="button" class="mem-button mem-restore">MR</button>
+                <button type="button" class="mem-button mem-add">M+</button>
+                <button type="button" class="mem-button mem-subtract">M-</button>
+                <button type="button" class="mem-button mem-store">MS</button>
+            </div>
             <div class="container">
                 <button type="button" id="percent" class="button">%</button>
                 <button type="button" id="clear-entry" class="button">CE</button>
@@ -79,16 +79,17 @@
         <div class="last"><button class="delete">&#128465;</button></div>
     </div>
 
-    <aside>
+    <aside class>
         <header class="header-sidebar">
-            <h3>History</h3>
-            <h3>Memory</h3>
+            <input type="radio" id="history" name="sidebar-menu" checked>
+            <label for="history" class="history" ><h3>History</h3></label>
+            <input type="radio" id="memory" name="sidebar-menu">
+            <label for="memory" class="memory"><h3>Memory</h3></label>
+            <div class="sidebar">
+                <div class="placeholder"></div>
+            </div>
         </header>
-        <div class="history">
-            <div class="history-header" class="memory-header"></div>
-        </div>
     </aside>
-
 </main>
 </body>
 </html>
