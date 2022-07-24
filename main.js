@@ -161,7 +161,7 @@ function createHistory() {
     let newDiv = document.createElement('div');
     let placeHistory = document.querySelector('.placeholder-history')
     x++;
-    newDiv.className = 'delete-all';
+    newDiv.className = 'delete-all-history';
     newDiv.innerHTML = displayDisplay.innerHTML;
     displayHistory.insertBefore(newDiv, placeHistory.nextSibling);
 }
@@ -171,18 +171,17 @@ function createMemory() {
     let newDiv = document.createElement('div');
     let placeMemory = document.querySelector('.placeholder-memory')
     x++;
-    newDiv.className = 'delete-all';
+    newDiv.className = 'delete-all-memory';
     newDiv.innerHTML = `<h2>${displayMain.innerHTML}</h2>`;
     displayMemory.insertBefore(newDiv, placeMemory.nextSibling);
 }
 
 function pressButton(e) {
+    let digit = e.target.id;
     console.log(e.target.className);
     if (e.target.className === "mem-button mem-subtract") {
         createMemory();
-    }
-    let digit = e.target.id;
-    if (digits.includes(digit)) {
+    } else if (digits.includes(digit)) {
         if (digit === '.') {
             if (numList == '') {
                 numList.push(0);
@@ -335,7 +334,7 @@ calc.addEventListener('click', pressButton);
 
 let deleteHistoryButton = document.querySelector('.delete-history');
 deleteHistoryButton.addEventListener('click', () => {
-    let deleteHistory = document.querySelectorAll('.delete-all');
+    let deleteHistory = document.querySelectorAll('.delete-all-history');
     for(var i = 0; i < deleteHistory.length; i++) {
         displayHistory.removeChild(deleteHistory[i]);
 }
@@ -343,7 +342,7 @@ deleteHistoryButton.addEventListener('click', () => {
 
     let deleteMemoryButton = document.querySelector('.delete-memory');
     deleteMemoryButton.addEventListener('click', () => {
-        let deleteMemory = document.querySelectorAll('.delete-all');
+        let deleteMemory = document.querySelectorAll('.delete-all-memory');
         for(var i = 0; i < deleteMemory.length; i++) {
             displayMemory.removeChild(deleteMemory[i]);
         }
