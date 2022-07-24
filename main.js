@@ -178,8 +178,9 @@ function createMemory() {
 
 function pressButton(e) {
     let digit = e.target.id;
-    console.log(e.target.className);
-    if (e.target.className === "mem-button mem-subtract") {
+    console.log(digit);
+
+    if (e.target.className === "mem-button mem-store") {
         createMemory();
     } else if (digits.includes(digit)) {
         if (digit === '.') {
@@ -329,7 +330,11 @@ function pressButton(e) {
     }
 }
 
-let calc = document.querySelector('.calculator');
+function toggleSidebar() {
+
+}
+
+let calc = document.querySelector('body');
 calc.addEventListener('click', pressButton);
 
 let deleteHistoryButton = document.querySelector('.delete-history');
