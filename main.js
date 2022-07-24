@@ -21,6 +21,8 @@ let memRestore = document.querySelector(".mem-restore");
 let memAdd = document.querySelector(".mem-add");
 let memSubtract = document.querySelector(".mem-subtract");
 let memStore = document.querySelector(".mem-store");
+let memContainer = document.querySelector(".sidebar-memory");
+let hisContainer = document.querySelector(".sidebar-history");
 
 function add(num1, num2) {
     return (num1 + num2);
@@ -176,11 +178,30 @@ function createMemory() {
     displayMemory.insertBefore(newDiv, placeMemory.nextSibling);
 }
 
+function toggleSidebar(status) {
+    if (status === 'memory') {
+        memContainer.removeAttribute('style');
+        memContainer.setAttribute('style', 'display: block');
+        hisContainer.removeAttribute('style');
+        hisContainer.setAttribute('style', 'display: none');
+    } else if (status === 'history') {
+        memContainer.removeAttribute('style');
+        memContainer.setAttribute('style', 'display: none');
+        hisContainer.removeAttribute('style');
+        hisContainer.setAttribute('style', 'display: block');
+    }
+}
+
 function pressButton(e) {
     let digit = e.target.id;
     console.log(digit);
-
-    if (e.target.className === "mem-button mem-store") {
+    if (digit === 'memory') {
+        toggleSidebar('memory');
+    }
+    else if (digit === 'history') {
+        toggleSidebar('history');
+    }
+    else if (e.target.className === "mem-button mem-store") {
         createMemory();
     } else if (digits.includes(digit)) {
         if (digit === '.') {
@@ -328,10 +349,6 @@ function pressButton(e) {
         displayMain.innerText = 0;
         numList = [0]
     }
-}
-
-function toggleSidebar() {
-
 }
 
 let calc = document.querySelector('body');

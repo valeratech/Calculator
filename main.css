@@ -262,14 +262,13 @@ h3 {
 
 
 input[type='radio']:checked + label h3 {
-    text-align: center;
     border-bottom: solid;
     border-color: #0087cc;
 }
 
 
-input[id="memory"]:checked {
-
+input[type='radio']:hover + label h3 {
+    color: #595959;
 }
 
 #equals {
@@ -284,4 +283,5 @@ input[id="memory"]:checked {
 #equals:active {
     background-color: #76adc9;
 }
+
 
