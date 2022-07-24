@@ -33,8 +33,8 @@
         </header>
         <div class="calculator">
             <div class="memory-container">
-                <button type="button" class="mem-button mem-clear">MC</button>
-                <button type="button" class="mem-button mem-restore">MR</button>
+                <button type="button" class="mem-button mem-clear" disabled>MC</button>
+                <button type="button" class="mem-button mem-restore" disabled>MR</button>
                 <button type="button" class="mem-button mem-add">M+</button>
                 <button type="button" class="mem-button mem-subtract">M-</button>
                 <button type="button" class="mem-button mem-store">MS</button>
@@ -76,7 +76,8 @@
                 <button type="button" id=equals class="button">=</button>
             </div>
         </div>
-        <div class="last"><button class="delete">&#128465;</button></div>
+        <div class="last"><button class="delete-history">&#128465;</button></div>
+        <div class="last"><button class="delete-memory">&#128465;</button></div>
     </div>
 
     <aside class>
@@ -85,8 +86,11 @@
             <label for="history" class="history" ><h3>History</h3></label>
             <input type="radio" id="memory" name="sidebar-menu">
             <label for="memory" class="memory"><h3>Memory</h3></label>
-            <div class="sidebar">
-                <div class="placeholder"></div>
+            <div class="sidebar-history">
+                <div class="placeholder-history"></div>
+            </div>
+            <div class="sidebar-memory">
+                <div class="placeholder-memory"></div>
             </div>
         </header>
     </aside>

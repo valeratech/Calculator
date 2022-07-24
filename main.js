@@ -11,7 +11,8 @@ let displaySecond = document.querySelector('.second-display');
 let displayMain = document.querySelector('h2');
 let displayEquals = document.querySelector('.equal');
 let displayDisplay = document.querySelector('.display');
-let displayHistory = document.querySelector('.sidebar');
+let displayHistory = document.querySelector('.sidebar-history');
+let displayMemory = document.querySelector('.sidebar-memory');
 let displayLast = document.querySelector('.last');
 let dispLaySquare = document.querySelector('#square');
 let displayRoot = document.querySelector("#square-root");
@@ -158,17 +159,27 @@ function testOperator() {
 function createHistory() {
     let x = 0
     let newDiv = document.createElement('div');
-    let placeholder = document.querySelector('.placeholder')
+    let placeHistory = document.querySelector('.placeholder-history')
     x++;
-    newDiv.className = 'deleteAll';
+    newDiv.className = 'delete-all';
     newDiv.innerHTML = displayDisplay.innerHTML;
-    displayHistory.insertBefore(newDiv, placeholder.nextSibling);
+    displayHistory.insertBefore(newDiv, placeHistory.nextSibling);
+}
+
+function createMemory() {
+    let x = 0
+    let newDiv = document.createElement('div');
+    let placeMemory = document.querySelector('.placeholder-memory')
+    x++;
+    newDiv.className = 'delete-all';
+    newDiv.innerHTML = displayDisplay.innerHTML;
+    displayMemory.insertBefore(newDiv, placeMemory.nextSibling);
 }
 
 function pressButton(e) {
     console.log(e.target.className);
     if (e.target.className === "mem-button mem-subtract") {
-        alert('hi');
+        createMemory();
     }
     let digit = e.target.id;
     if (digits.includes(digit)) {
@@ -322,10 +333,18 @@ function pressButton(e) {
 let calc = document.querySelector('.calculator');
 calc.addEventListener('click', pressButton);
 
-let deleteButton = document.querySelector('.delete');
-deleteButton.addEventListener('click', () => {
-    let deleteHistory = document.querySelectorAll('.deleteAll');
+let deleteHistoryButton = document.querySelector('.delete-history');
+deleteHistoryButton.addEventListener('click', () => {
+    let deleteHistory = document.querySelectorAll('.delete-all');
     for(var i = 0; i < deleteHistory.length; i++) {
         displayHistory.removeChild(deleteHistory[i]);
 }
+})
+
+    let deleteMemoryButton = document.querySelector('.delete-memory');
+    deleteMemoryButton.addEventListener('click', () => {
+        let deleteMemory = document.querySelectorAll('.delete-all');
+        for(var i = 0; i < deleteMemory.length; i++) {
+            displayMemory.removeChild(deleteMemory[i]);
+        }
 })

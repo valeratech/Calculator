@@ -33,6 +33,10 @@ body {
     border-radius: 10px;
 }
 
+/*.sidebar-history {*/
+/*    display: none;*/
+/*}*/
+
 .tracker {
     display: flex;
     justify-content: flex-end;
@@ -100,7 +104,7 @@ aside h2 {
     font-weight: bold;
 }
 
-.delete {
+.delete-history {
     padding: 10px;
     margin: 20px auto;
     top: 595px;
@@ -110,7 +114,22 @@ aside h2 {
     font-size: 1.5rem;
 }
 
-.delete:hover {
+.delete-history:hover {
+    background-color: #e7e7e7;
+    border-radius: 10px;
+}
+
+.delete-memory {
+    padding: 10px;
+    margin: 20px auto;
+    top: 595px;
+    right: 465px;
+    background-color: #f4f4ff;
+    border-style: none;
+    font-size: 1.5rem;
+}
+
+.delete-memory:hover {
     background-color: #e7e7e7;
     border-radius: 10px;
 }
@@ -251,6 +270,10 @@ input[type='radio']:checked + label h3 {
     border-color: #0087cc;
 }
 
+
+input[id="memory"]:checked {
+
+}
 
 #equals {
     background-color: #0087cc;
