@@ -172,7 +172,7 @@ function createMemory() {
     let placeMemory = document.querySelector('.placeholder-memory')
     x++;
     newDiv.className = 'delete-all';
-    newDiv.innerHTML = displayDisplay.innerHTML;
+    newDiv.innerHTML = `<h2>${displayMain.innerHTML}</h2>`;
     displayMemory.insertBefore(newDiv, placeMemory.nextSibling);
 }
 
