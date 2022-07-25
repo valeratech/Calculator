@@ -24,12 +24,35 @@ let memStore = document.querySelector(".mem-store");
 let memContainer = document.querySelector(".sidebar-memory");
 let hisContainer = document.querySelector(".sidebar-history");
 
+
 function add(num1, num2) {
     return (num1 + num2);
 }
 
 function substract(num1, num2) {
     return (num1 - num2);
+}
+
+function memorySubtract() {
+    let memNode = document.querySelectorAll('.delete-all-memory');
+    let content = memNode[0].getElementsByTagName('h2')[0];
+    console.log('content');
+    if (content) {
+        content.innerText = (content.innerText - displayMain.innerText);
+    } else {
+        alert('false');
+    }
+}
+
+function memoryAdd() {
+    let memNode = document.querySelectorAll('.delete-all-memory');
+    let content = memNode[0].getElementsByTagName('h2')[0];
+    console.log('content');
+    if (content) {
+        content.innerText = (parseInt(content.innerText) + parseInt(displayMain.innerText));
+    } else {
+        alert('false');
+    }
 }
 
 function multiply(num1, num2) {
@@ -145,7 +168,6 @@ function testOperator() {
         displayFirst.innerText = displayMain.innerText;
         createHistory();
     } else if (displayOperator.innerText === '%') {
-        console.log(hiddenOperator);
     } else if (displayEquals.innerText === '=') {
         displaySecond.innerText = '';
         displayEquals.innerText = '';
@@ -194,14 +216,15 @@ function toggleSidebar(status) {
 
 function pressButton(e) {
     let digit = e.target.id;
-    console.log(digit);
     if (digit === 'memory') {
         toggleSidebar('memory');
-    }
-    else if (digit === 'history') {
+    } else if (digit === 'history') {
         toggleSidebar('history');
-    }
-    else if (e.target.className === "mem-button mem-store") {
+    } else if (digit === 'mem-subtract') {
+        memorySubtract();
+    } else if (digit === 'mem-add'){
+        memoryAdd();
+    } else if (digit === "mem-store") {
         createMemory();
     } else if (digits.includes(digit)) {
         if (digit === '.') {
