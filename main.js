@@ -16,8 +16,8 @@ let displayMemory = document.querySelector('.sidebar-memory');
 let displayLast = document.querySelector('.last');
 let dispLaySquare = document.querySelector('#square');
 let displayRoot = document.querySelector("#square-root");
-// let memClear = document.querySelector("#mem-clear");
-let memRestore = document.querySelector(".mem-restore");
+let memClear = document.querySelector("#mem-clear");
+let memRestore = document.querySelector("#mem-restore");
 let memAdd = document.querySelector(".mem-add");
 let memSubtract = document.querySelector(".mem-subtract");
 let memStore = document.querySelector(".mem-store");
@@ -198,6 +198,8 @@ function createMemory() {
     let defaultMessage = document.querySelector('.memoryMessage');
     if (defaultMessage) {
         placeMemory.removeChild(defaultMessage);
+        memClear.disabled = false;
+        memRestore.disabled = false;
     }
     x++;
     newDiv.className = 'delete-all-memory';
@@ -396,6 +398,8 @@ deleteHistoryButton.addEventListener('click', () => {
 deleteMemoryButton.addEventListener('click', memoryClear);
 
 function memoryClear() {
+    memClear.disabled = true;
+    memRestore.disabled = true;
     let deleteMemory = document.querySelectorAll('.delete-all-memory');
     for(var i = 0; i < deleteMemory.length; i++) {
         displayMemory.removeChild(deleteMemory[i]);
