@@ -16,13 +16,14 @@ let displayMemory = document.querySelector('.sidebar-memory');
 let displayLast = document.querySelector('.last');
 let dispLaySquare = document.querySelector('#square');
 let displayRoot = document.querySelector("#square-root");
-let memClear = document.querySelector(".mem-clear");
+// let memClear = document.querySelector("#mem-clear");
 let memRestore = document.querySelector(".mem-restore");
 let memAdd = document.querySelector(".mem-add");
 let memSubtract = document.querySelector(".mem-subtract");
 let memStore = document.querySelector(".mem-store");
 let memContainer = document.querySelector(".sidebar-memory");
 let hisContainer = document.querySelector(".sidebar-history");
+let deleteMemoryButton = document.querySelector('.delete-memory');
 
 
 function add(num1, num2) {
@@ -191,9 +192,13 @@ function createHistory() {
 }
 
 function createMemory() {
-    let x = 0
+    let x = 0;
     let newDiv = document.createElement('div');
-    let placeMemory = document.querySelector('.placeholder-memory')
+    let placeMemory = document.querySelector('.placeholder-memory');
+    let defaultMessage = document.querySelector('.memoryMessage');
+    if (defaultMessage) {
+        placeMemory.removeChild(defaultMessage);
+    }
     x++;
     newDiv.className = 'delete-all-memory';
     newDiv.innerHTML = `<h2>${displayMain.innerHTML}</h2>`;
@@ -226,6 +231,8 @@ function pressButton(e) {
         memoryAdd();
     } else if (digit === "mem-store") {
         createMemory();
+    } else if (digit === "mem-clear") {
+        memoryClear();
     } else if (digits.includes(digit)) {
         if (digit === '.') {
             if (numList == '') {
@@ -385,10 +392,12 @@ deleteHistoryButton.addEventListener('click', () => {
 }
 })
 
-    let deleteMemoryButton = document.querySelector('.delete-memory');
-    deleteMemoryButton.addEventListener('click', () => {
-        let deleteMemory = document.querySelectorAll('.delete-all-memory');
-        for(var i = 0; i < deleteMemory.length; i++) {
-            displayMemory.removeChild(deleteMemory[i]);
-        }
-})
+
+deleteMemoryButton.addEventListener('click', memoryClear);
+
+function memoryClear() {
+    let deleteMemory = document.querySelectorAll('.delete-all-memory');
+    for(var i = 0; i < deleteMemory.length; i++) {
+        displayMemory.removeChild(deleteMemory[i]);
+    }
+}
