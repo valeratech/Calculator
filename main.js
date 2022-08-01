@@ -38,7 +38,9 @@ function memorySubtract() {
     let memNode = document.querySelectorAll('.delete-all-memory');
     let content = memNode[0].getElementsByTagName('h2')[0];
     console.log('content');
-    if (content) {
+    if (displayMain.innerText === 0) {
+        //pass
+    } else if (content) {
         content.innerText = (content.innerText - displayMain.innerText);
     } else {
         alert('false');
@@ -48,8 +50,10 @@ function memorySubtract() {
 function memoryAdd() {
     let memNode = document.querySelectorAll('.delete-all-memory');
     let content = memNode[0].getElementsByTagName('h2')[0];
-    console.log('content');
-    if (content) {
+    console.log(displayMain.innerText);
+    if (displayMain.innerText === 0) {
+        //pass
+    } else if (content) {
         content.innerText = (parseInt(content.innerText) + parseInt(displayMain.innerText));
     } else {
         alert('false');
@@ -198,13 +202,12 @@ function createMemory() {
     let defaultMessage = document.querySelector('.memoryMessage');
     if (defaultMessage) {
         placeMemory.removeChild(defaultMessage);
-        memClear.disabled = false;
-        memRestore.disabled = false;
     }
     x++;
     newDiv.className = 'delete-all-memory';
     newDiv.innerHTML = `<h2>${displayMain.innerHTML}</h2>`;
     displayMemory.insertBefore(newDiv, placeMemory.nextSibling);
+    numList = [];
 }
 
 function toggleSidebar(status) {
@@ -225,6 +228,14 @@ function pressButton(e) {
     let digit = e.target.id;
     if (digit === 'memory') {
         toggleSidebar('memory');
+    } else if (digit === "mem-clear") {
+        memoryClear();
+    }  else if (digit === "mem-restore") {
+        let x = document.querySelectorAll('.delete-all-memory')
+        console.log(x[0].innerHTML);
+        if (x[0].innerHTML) {
+            displayMain.innerHTML = x[0].innerHTML;
+        }
     } else if (digit === 'history') {
         toggleSidebar('history');
     } else if (digit === 'mem-subtract') {
@@ -233,8 +244,8 @@ function pressButton(e) {
         memoryAdd();
     } else if (digit === "mem-store") {
         createMemory();
-    } else if (digit === "mem-clear") {
-        memoryClear();
+        memClear.disabled = false;
+        memRestore.disabled = false;
     } else if (digits.includes(digit)) {
         if (digit === '.') {
             if (numList == '') {
