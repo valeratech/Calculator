@@ -21,7 +21,7 @@
     </nav>
 </header>
 <main>
-    <div class="workspace">
+    <section class="workspace">
         <header class="display">
             <div class="tracker">
                 <p class="first-display"></p>
@@ -77,9 +77,66 @@
             </div>
         </div>
         <div class="last"><button class="delete-history">&#128465;</button></div>
-        <div class="last"><button class="delete-memory">&#128465;</button></div>
-    </div>
-
+        <div class="last"><button class="delete-memory" style="display: none">&#128465;</button></div>
+    </section>
+    <section style="display: none">
+        <header class="display">
+            <div class="tracker">
+                <p class="first-display"></p>
+                <p class="operator"></p>
+                <p class="second-display"></p>
+                <p class="equal"></p>
+            </div>
+            <div><h2>0</h2></div>
+        </header>
+        <div class="calculator">
+            <div class="memory-container">
+                <button type="button" id="mem-clear" class="mem-button" disabled>MC</button>
+                <button type="button" id="mem-restore" class="mem-button" disabled>MR</button>
+                <button type="button" id="mem-add" class="mem-button">M+</button>
+                <button type="button" id="mem-subtract" class="mem-button">M-</button>
+                <button type="button" id="mem-store" class="mem-button">MS</button>
+            </div>
+            <div class="container">
+                <button type="button" id="percent" class="button">%</button>
+                <button type="button" id="clear-entry" class="button">CE</button>
+                <button type="button" id="clear" class="button">C</button>
+                <button type="button" id="backspace" class="button"><<</button>
+            </div>
+            <div class="container">
+                <button type="button" id="reciprocal" class="button">1/x</button>
+                <button type="button" id="square" class="button">x2</button>
+                <button type="button" id="square-root" class="button">&#x221A;</button>
+                <button type="button" id="divide" class="button">/</button>
+            </div>
+            <div class="container">
+                <button type="button" id="7" class="button digit">7</button>
+                <button type="button" id="8" class="button digit">8</button>
+                <button type="button" id="9" class="button digit">9</button>
+                <button type="button" id="multiply" class="button">X</button>
+            </div>
+            <div class="container">
+                <button type="button" id="4" class="button digit">4</button>
+                <button type="button" id="5" class="button digit">5</button>
+                <button type="button" id="6" class="button digit">6</button>
+                <button type="button" id="subtract" class="button">-</button>
+            </div>
+            <div class="container">
+                <button type="button" id="1" class="button digit">1</button>
+                <button type="button" id="2" class="button digit">2</button>
+                <button type="button" id="3" class="button digit">3</button>
+                <button type="button" id="add" class="button">+</button>
+            </div>
+            <div class="container">
+                <button type="button" id="pos-neg" class="button">+/-</button>
+                <button type="button" id="0" class="button digit">0</button>
+                <button type="button" id="." class="button">.</button>
+                <button type="button" id=equals class="button">=</button>
+            </div>
+        </div>
+        <div class="last"><button class="delete-history">&#128465;</button></div>
+        <div class="last"><button class="delete-memory" style="display: none">&#128465;</button></div>
+    </section>
     <aside class>
         <header class="header-sidebar">
             <input type="radio" id="history" name="sidebar-menu" checked>

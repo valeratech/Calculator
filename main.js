@@ -24,8 +24,10 @@ let memStore = document.querySelector(".mem-store");
 let memContainer = document.querySelector(".sidebar-memory");
 let hisContainer = document.querySelector(".sidebar-history");
 let deleteMemoryButton = document.querySelector('.delete-memory');
+let deleteHistoryButton = document.querySelector('.delete-history');
 let placeMemory = document.querySelector('.placeholder-memory');
 let defaultMessage = document.querySelector('.memoryMessage');
+let calc = document.querySelector('body');
 
 
 function add(num1, num2) {
@@ -232,11 +234,19 @@ function toggleSidebar(status) {
         memContainer.setAttribute('style', 'display: block');
         hisContainer.removeAttribute('style');
         hisContainer.setAttribute('style', 'display: none');
+        deleteMemoryButton.removeAttribute('style');
+        deleteMemoryButton.setAttribute('style', 'display: block');
+        deleteHistoryButton.removeAttribute('style');
+        deleteHistoryButton.setAttribute('style', 'display: none');
     } else if (status === 'history') {
         memContainer.removeAttribute('style');
         memContainer.setAttribute('style', 'display: none');
         hisContainer.removeAttribute('style');
         hisContainer.setAttribute('style', 'display: block');
+        deleteMemoryButton.removeAttribute('style');
+        deleteMemoryButton.setAttribute('style', 'display: none');
+        deleteHistoryButton.removeAttribute('style');
+        deleteHistoryButton.setAttribute('style', 'display: block');
     }
 }
 
@@ -409,15 +419,11 @@ function pressButton(e) {
     }
 }
 
-let calc = document.querySelector('body');
 calc.addEventListener('click', pressButton);
-
-let deleteHistoryButton = document.querySelector('.delete-history');
+deleteMemoryButton.addEventListener('click', memoryClear);
 deleteHistoryButton.addEventListener('click', () => {
     let deleteHistory = document.querySelectorAll('.delete-all-history');
     for(var i = 0; i < deleteHistory.length; i++) {
         displayHistory.removeChild(deleteHistory[i]);
 }
 })
-
-deleteMemoryButton.addEventListener('click', memoryClear);

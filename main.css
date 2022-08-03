@@ -101,11 +101,18 @@ aside h2 {
     font-weight: bold;
 }
 
+.last {
+    position: relative;
+    margin-left: 980px;
+}
+
+
 .delete-history {
+    position: absolute;
     padding: 10px;
     margin: 20px auto;
-    top: 595px;
-    right: 465px;
+    top: 0;
+    right: -400px;
     background-color: #f4f4ff;
     border-style: none;
     font-size: 1.5rem;
@@ -117,10 +124,11 @@ aside h2 {
 }
 
 .delete-memory {
+    position: absolute;
     padding: 10px;
     margin: 20px auto;
-    top: 595px;
-    right: 465px;
+    top: 0;
+    right: -400px;
     background-color: #f4f4ff;
     border-style: none;
     font-size: 1.5rem;
@@ -129,10 +137,6 @@ aside h2 {
 .delete-memory:hover {
     background-color: #e7e7e7;
     border-radius: 10px;
-}
-
-.last {
-    margin-left: 980px;
 }
 
 .container {
