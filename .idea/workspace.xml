@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5f2cc5af-8b60-49c8-963c-b2887e481886" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +35,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/administrator/Odin/Calculator",
+    "last_opened_file_path": "/home/administrator/Odin/Admin-Dashboard",
     "list.type.of.created.stylesheet": "CSS",
     "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "vue.rearranger.settings.migration": "true"
@@ -80,7 +79,8 @@
       <workItem from="1657067551142" duration="25000" />
       <workItem from="1657067738556" duration="14000" />
       <workItem from="1657067767168" duration="13000" />
-      <workItem from="1659292964616" duration="20193000" />
+      <workItem from="1659292964616" duration="21060000" />
+      <workItem from="1659408732613" duration="1408000" />
     </task>
     <servers />
   </component>

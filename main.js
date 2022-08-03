@@ -71,6 +71,7 @@ function memoryClear() {
     for(var i = 0; i < deleteMemory.length; i++) {
         displayMemory.removeChild(deleteMemory[i]);
     }
+    placeMemory.innerHTML = '<p className="memoryMessage">There is nothing saved in memory</p>';
 }
 
 function multiply(num1, num2) {
