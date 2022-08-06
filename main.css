@@ -179,6 +179,10 @@ input {
     display: none;
 }
 
+.pocket {
+    color: black;
+}
+
 .menu {
     border: 1px solid #cecfd5;
     border-radius: 6px;
@@ -218,10 +222,18 @@ nav {
     color: #1ece1e;
 }
 
+.menu-nav li:hover {
+    background-color: #eeeeee;
+}
+
+.menu-nav li:first-child:hover {
+    background-color: transparent;
+}
+
 /* upon being check sets the max-height large enough to display content */
 #toggle:checked ~ nav {
     max-height: 500px;
-    background-color: #eaeaea;
+    background-color: #f7f7fc;
     box-shadow: 10px 10px 10px -6px gray;
 }
 
@@ -236,9 +248,12 @@ nav {
     text-align: center;
 }
 
-/*.menu::selection {*/
-/*    background: none;*/
-/*}*/
+.type {
+    position: absolute;
+    left: 45px;
+    top: 8px;
+    font-size: 1.563rem;
+}
 
 /* The rest of the configuration below styles the content */
 ul {
@@ -257,15 +272,15 @@ li:first-child {
 }
 
 a {
-    color: #0087cc;
+    color: #006ea9;
     display: block;
     padding: 6px 12px;
     text-decoration: none;
     font-size: 1.25rem;
 }
 
-a:hover {
-    color: #ff7b29;
+a:active {
+    color: #4587b1;
 }
 
 
@@ -298,7 +313,7 @@ input[type='radio']:hover + label h3 {
 }
 
 #equals:active {
-    background-color: #76adc9;
+    background-color: #7aadc7;
 }
 
 

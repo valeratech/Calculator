@@ -389,13 +389,13 @@ function pressButton(e) {
     } else if (digit === 'percent') {
         // This condition calls the calculate percentage function directly without using the test function
         let opArray = ['+', '-', 'x', '/'];
-        if (displayFirst.innerText != displayMain.innerText) {
-            value = operate(['percentageOne', displayFirst.innerText, displayMain.innerText]);
-            displayMain.innerText = value;
-        } else if (!opArray.includes(displayOperator.innerText)) {
+        if (!opArray.includes(displayOperator.innerText)) {
             displayMain.innerText = 0;
             displayFirst.innerText = 0;
             numList = [0];
+        } else if (displayFirst.innerText != displayMain.innerText) {
+            value = operate(['percentageOne', displayFirst.innerText, displayMain.innerText]);
+            displayMain.innerText = value;
         } else if (opArray.includes(displayOperator.innerText)) {
             value = operate(['percentageTwo', displayFirst.innerText, displayMain.innerText]);
             displayMain.innerText = value;
