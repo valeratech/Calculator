@@ -210,7 +210,7 @@ nav {
     display: inline-block;
     max-height: 0;
     overflow: hidden;
-    transition: all .05s ease;
+    transition: all .15s .04s;
     padding: 20px;
     border-radius: 10px;
 }
@@ -235,6 +235,7 @@ nav {
     max-height: 500px;
     background-color: #f7f7fc;
     box-shadow: 10px 10px 10px -6px gray;
+    transition: all .15s .04s;
 }
 
 .menu:hover {
