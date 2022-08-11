@@ -32,6 +32,10 @@ header {
     display: flex;
 }
 
+.memory-container button {
+    cursor: pointer;
+}
+
 .mem-button {
     padding: 20px 30px;
     border-style: none;
@@ -130,6 +134,7 @@ aside h2 {
     background-color: #f4f4ff;
     border-style: none;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 
 .delete-history:hover {
@@ -150,6 +155,7 @@ aside h2 {
     background-color: #f4f4ff;
     border-style: none;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 
 .delete-memory:hover {
